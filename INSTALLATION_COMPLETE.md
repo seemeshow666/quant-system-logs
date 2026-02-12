@@ -22,8 +22,10 @@
 ├── .git/                   # Git 仓库 ✅
 ├── .gitignore              # 忽略规则 ✅
 ├── .gitattributes          # git-crypt 配置 ✅
+├── .env                    # ✅ 加密配置 (API keys)
 ├── .env.example            # 配置模板 ✅
 ├── README.md               # 项目说明 ✅
+├── INSTALLATION_COMPLETE.md # 安装报告 ✅
 ├── logs/                   # 操作日志 ✅
 │   └── software/           # 软件安装记录 ✅
 │       ├── conda.md
@@ -46,6 +48,38 @@
 ~/quant/                    # RD-Agent 项目目录 ✅
 └── projects/               # 量化策略项目
 ```
+
+## 🔐 GitHub 仓库
+
+**URL**: https://github.com/seemeshow666/quant-system-logs
+
+**状态**: ✅ 已推送
+
+```bash
+# 克隆仓库
+git clone https://github.com/seemeshow666/quant-system-logs.git
+
+# 推送更新
+cd ~/system-logs
+git add -A
+git commit -m "描述"
+git push
+```
+
+**注意**: `.env` 文件已加密，使用 git-crypt 保护 API keys。
+
+## ⚙️ 配置信息
+
+### MySQL
+- Host: localhost
+- Port: 3306
+- Database: quant_db
+- User: quant_user
+- Password: quant@2024
+
+### LLM API（已配置）
+- ✅ DeepSeek Chat: configured
+- ✅ SiliconFlow Embedding: configured
 
 ## 🔧 重要命令
 
@@ -100,29 +134,6 @@ mysqldump -u root -p'quant@2024' quant_db > backup.sql
 cat ~/system-logs/logs/software/conda.md
 ```
 
-## ⚙️ 配置信息
-
-### MySQL
-- Host: localhost
-- Port: 3306
-- Database: quant_db
-- User: quant_user
-- Password: quant@2024
-
-### LLM API（需要手动配置）
-编辑文件：`~/system-logs/.env`
-
-```bash
-# DeepSeek Chat
-CHAT_MODEL=deepseek/deepseek-chat
-DEEPSEEK_API_KEY=your_key_here
-
-# SiliconFlow Embedding
-EMBEDDING_MODEL=litellm_proxy/BAAI/bge-m3
-LITELLM_PROXY_API_KEY=your_key_here
-LITELLM_PROXY_API_BASE=https://api.siliconflow.cn/v1
-```
-
 ## 🔐 Git + git-crypt
 
 ```bash
@@ -146,35 +157,16 @@ git push
 - **日志**: `~/system-logs/logs/cron.log`
 - **位置**: `~/system-logs/backups/`
 
-## 🚀 下一步操作
+## 🚀 启动 RD-Agent
 
-### 1. 配置 LLM API Keys（必须）
 ```bash
-cd ~/system-logs
-cp .env.example .env
-nano .env
-# 填入 DeepSeek 和 SiliconFlow API keys
-```
-
-### 2. 重启终端或刷新配置
-```bash
-source ~/.bashrc
-```
-
-### 3. 启动 RD-Agent
-```bash
+# 激活环境
 conda activate rdagent
+
+# 启动综合量化场景
+cd ~/quant
 rdagent fin_quant
 ```
-
-## 📝 待办事项
-
-| 优先级 | 事项 | 状态 |
-|--------|------|------|
-| 🔴 高 | 配置 LLM API Keys | ⏳ 待用户操作 |
-| 🔴 高 | 创建 GitHub 仓库并推送 | ⏳ 待用户操作 |
-| 🟡 中 | 生成 GPG 密钥用于 git-crypt | ⏳ 可选 |
-| 🟢 低 | 测试完整恢复流程 | ⏳ 可选 |
 
 ## 🎯 使用场景
 
@@ -188,7 +180,7 @@ rdagent fin_quant
 ### 场景2：换电脑后恢复
 ```bash
 # 1. 克隆仓库
-git clone <your-repo-url> ~/system-logs
+git clone https://github.com/seemeshow666/quant-system-logs.git ~/system-logs
 cd ~/system-logs
 
 # 2. 解密
@@ -201,6 +193,8 @@ git-crypt unlock
 conda activate rdagent
 rdagent fin_quant
 ```
+
+---
 
 ## 📞 技术支持
 
