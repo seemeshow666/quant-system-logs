@@ -1,0 +1,69 @@
+# Dependencies
+/miniconda3/
+/opt/miniconda3/
+~/.conda/
+~/.condarc
+
+# Data directories
+~/data/
+/data/
+*.csv
+*.h5
+*.hdf5
+
+# Database files
+*.sql
+/mysql/
+/var/lib/mysql/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/*.log
+logs/cron.log
+
+# Backup files
+backups/
+*.tar.gz
+*.zip
+
+# Environment files (use .env.example instead)
+.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sbin/
+share/
+Windows/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/

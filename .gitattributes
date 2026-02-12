@@ -1,0 +1,15 @@
+# Git Crypt Configuration
+# Encrypt sensitive files
+
+# Pattern to encrypt
+.env filter=git-crypt diff=git-crypt
+.env.example filter=git-crypt diff=git-crypt
+*.key filter=git-crypt diff=git-crypt
+secrets/** filter=git-crypt diff=git-crypt
+
+# Don't encrypt these files
+README.md !filter !diff
+*.md !filter !diff
+*.sh !filter !diff
+logs/software/** !filter !diff
+scripts/** !filter !diff
